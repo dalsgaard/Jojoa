@@ -1,0 +1,18 @@
+
+@media (orientation: portrait) {
+
+  #screen {
+    height: 460px;
+    width: 320px;
+  }
+
+}
+
+@media (orientation: landscape) {
+
+  #screen {
+    height: 300px;
+    width: 480px;
+  }
+
+}

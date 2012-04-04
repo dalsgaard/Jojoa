@@ -1,0 +1,37 @@
+doctype 5
+html
+  head
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='viewport', content='user-scalable=no, initial-scale=1.0')
+    title Mobile Web Demo
+    link(rel='stylesheet', href="reset.css")
+    link(rel='stylesheet', href="device.css", media="(max-device-width: 7680px) and (max-device-height: 10240px)")
+    link(rel='stylesheet', href="phone.css", media="(device-width: 320px) and (device-height: 480px)")
+    link(rel='stylesheet', href="tablet.css", media="(device-width: 768px) and (device-height: 1024px)")
+    script(src="modernizr.js")
+    script(src="jojoa.js")
+    script(src="demo.js")
+  body
+    div#views
+      section.view("data-name"="foo")
+        section.navigation
+          header
+            hgroup
+              h1 Foo
+          section.container
+            section.view("data-name"="blahblah") Blah blah
+            section.view("data-name"="blah")
+              section.content
+                button.dismiss-foo Dismiss
+      section.view("data-name"="bar")
+        header
+          hgroup
+            h1 Bar
+      section.view("data-name"="baz") Baz
+      section.view("data-name"="main")
+        header
+          hgroup
+            h1 Main
+        section.content
+          button.present-foo Present
+    section#page
