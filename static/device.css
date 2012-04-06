@@ -1,87 +1,66 @@
 
 body {
-  font-family: 'Helvetica Neue', Helvetica;
-  font-weight: bold;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 #page {
   position: relative;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-#page h1 {
-  font-size: 20px;
-  padding: 12px;
-  text-align: center;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
-}
-
-#page button {
-  padding: 8px 16px;
 }
 
 section.view {
-  background-image: url(background.jpg);
   height: 100%;
   position: absolute;
   width: 100%;
 }
 
-section.view > section.content {
-  padding: 20px;
+section.page > section.view.appear {
+  -webkit-animation: modal-appear 1s;
 }
 
-section.view.modal.appear {
-  -webkit-animation: model-appear 1s;
-}
-
-section.view.modal.disappear {
-  -webkit-animation: model-disappear 1s;
+section.page > section.view.disappear {
+  -webkit-animation: modal-disappear 1s;
   -webkit-transform: scale(0, 0);
 }
 
 section.navigation {
-  background-color: #999999;
   display: -webkit-box;
   height: 100%;
   overflow: hidden;
   position: relative;
   width: 100%;
   -webkit-box-orient: vertical;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 section.navigation > section.container {
-  background-color: #66eeee;
+  background-color: #909090;
   position: relative;
   width: 100%;
   -webkit-box-flex: 1;
 }
 
-section.navigation.push > section.container {
+section.navigation > section.container.push {
   -webkit-animation: navigation-push 1s;
 }
 
-section.navigation.pop > section.container {
+section.navigation > section.container.pop {
   -webkit-animation: navigation-pop 1s;
 }
 
-section.navigation.push > section.container > section.view:last-child {
+section.navigation > section.container.push > section.view:last-child {
   -webkit-transform: translate3d(100%, 0, 0);
 }
 
-section.navigation.pop > section.container > section.view:last-child {
+section.navigation > section.container.pop > section.view:last-child {
   -webkit-transform: translate3d(100%, 0, 0);
 }
 
-section.view > header, section.navigation > header {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(13,204,255,1)), to(rgba(10,153,191,1)));
-  box-shadow: rgba(0, 0, 0, 0.4) 0 3px 3px;
-  color: white;
-  font-family: Helvetica;
-  height: 44px;
+section.view > header {
   position: relative;
   width: 100%;
+}
+
+section.view > header nav.back {
+  float: left;
 }
 
 section.view:last-child > header {
@@ -92,11 +71,11 @@ section.view:last-child section.navigation > header {
   z-index: 100;
 }
 
-div#views {
+div.bundle {
   display: none;
 }
 
-@-webkit-keyframes model-appear {
+@-webkit-keyframes modal-appear {
   from {
     -webkit-transform: scale(0, 0);
   }
@@ -105,7 +84,7 @@ div#views {
   }
 }
 
-@-webkit-keyframes model-disappear {
+@-webkit-keyframes modal-disappear {
   from {
     -webkit-transform: scale(1, 1);
   }
@@ -130,9 +109,4 @@ div#views {
   to {
     -webkit-transform: translate3d(0, 0, 0);
   }
-}
-
-#page {
-  height: 748px;
-  width: 1024px;
 }

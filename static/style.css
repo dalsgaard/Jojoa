@@ -1,0 +1,31 @@
+
+body {
+  font-family: 'Helvetica Neue', Helvetica;
+  font-weight: bold;
+}
+
+#page h1 {
+  font-size: 20px;
+  padding: 12px;
+  text-align: center;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+#page button {
+  padding: 8px 16px;
+}
+
+section.view {
+  background-image: url(background.jpg);
+}
+
+section.view > section.content {
+  padding: 20px;
+}
+
+section.view > header, section.navigation > header {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(13,204,255,1)), to(rgba(10,153,191,1)));
+  box-shadow: rgba(0, 0, 0, 0.4) 0 3px 3px;
+  color: white;
+  height: 44px;
+}
