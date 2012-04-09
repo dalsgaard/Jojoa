@@ -1,7 +1,7 @@
 
 @media (orientation: portrait) {
 
-  #screen {
+  #page {
     height: 1004px;
     width: 768px;
   }
@@ -10,7 +10,7 @@
 
 @media (orientation: landscape) {
 
-  #screen {
+  #page {
     height: 748px;
     width: 1024px;
   }

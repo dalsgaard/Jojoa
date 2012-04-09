@@ -1,4 +1,11 @@
 
+document.addEventListener('DOMContentLoaded', function() {
+  document.body.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+  }, false);
+}, false);
+
+
 function PageController(page) {
   this.page = page;
   this.viewControllers = [];
@@ -75,11 +82,13 @@ ViewController.prototype = new AbstractViewController();
 function NavigationController(view) {
   this.init(view);
   this.container = view.querySelector("section.container");
-  this.back = view.querySelector("header > nav.back > *");
+  this.back = view.querySelector("header > nav.left > *.back");
   var t = this;
-  this.back.addEventListener('click', function(e) {
-    t.popViewController(true);
-  }, false);
+  if (this.back) {
+    this.back.addEventListener('click', function(e) {
+      t.popViewController(true);
+    }, false);
+  }
   this.viewControllers = [];
   var t = this;
   this.container.addEventListener('webkitAnimationStart', function(e) {

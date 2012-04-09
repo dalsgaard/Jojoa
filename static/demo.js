@@ -30,10 +30,33 @@ function setup() {
     e.stopPropagation();
   }, false);
 
-  var presentFoo = mainViewController.view.querySelector("button.present-foo");
+  var presentFoo = mainViewController.view.querySelector(".present-foo");
   presentFoo.addEventListener('click', function(e) {
     pageController.presentViewController(navController, true);
     e.stopPropagation();
   }, false);
 
+  setupMainMenu(mainViewController.view, bundle, pageController);
+
 };
+
+function setupMainMenu(content, bundle, pageController) {
+
+  var formFieldsController = bundle.viewControllers['form-fields'];
+  setupDoneButton(formFieldsController.view, pageController);
+
+  content.querySelector(".button.form-fields").addEventListener('click', function(e) {
+    pageController.presentViewController(formFieldsController, true);
+    e.stopPropagation();
+  }, false);
+}
+
+function setupDoneButton(view, pageController) {
+  var button = view.querySelector(".button.done");
+  button.addEventListener('click', click, false);
+
+  function click(e) {
+    pageController.dismissViewController(true);
+    e.stopPropagation();
+  }
+}

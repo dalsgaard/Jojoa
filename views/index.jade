@@ -5,34 +5,39 @@ html
     meta(name='viewport', content='user-scalable=no, initial-scale=1.0')
     title Mobile Web Demo
     link(rel='stylesheet', href="reset.css")
-    link(rel='stylesheet', href="style.css")
     link(rel='stylesheet', href="device.css", media="(max-device-width: 7680px) and (max-device-height: 10240px)")
     link(rel='stylesheet', href="desktop.css", media="(min-device-width: 769px) and (min-device-height: 1025px)")
     link(rel='stylesheet', href="phone.css", media="(device-width: 320px) and (device-height: 480px)")
     link(rel='stylesheet', href="tablet.css", media="(device-width: 768px) and (device-height: 1024px)")
+    link(rel='stylesheet', href="style.css")
+    script(src="script.js")
     script(src="modernizr.js")
     script(src="jojoa.js")
     script(src="demo.js")
   body
     div.bundle#views
+
+      include mainmenu
+
+      section.view.navigation("data-name"="nav")
+        header
+          nav.left
+            div.button.back Back
+          hgroup
+            h1 Nav
+          nav.right
+            div.button.done Done
+        section.container
+
       section.view("data-name"="foo")
         section.content
           button.dismiss-foo Dismiss
-      section.view.navigation("data-name"="nav")
-        header
-          nav.back
-            div Back
-          hgroup
-            h1 Nav
-        section.container
+
       section.view("data-name"="bar")
         section.content
           button.push-foo Foo 
-      section.view("data-name"="baz") Baz
-      section.view("data-name"="main")
-        header
-          hgroup
-            h1 Main
-        section.content
-          button.present-foo Present
+
+      include formfields
+      
+
     section.page#page

@@ -1,7 +1,7 @@
 
 body {
   font-family: 'Helvetica Neue', Helvetica;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 #page h1 {
@@ -21,11 +21,98 @@ section.view {
 
 section.view > section.content {
   padding: 20px;
+  height: 94.1176471%;
 }
 
-section.view > header, section.navigation > header {
+section.view > header {
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(13,204,255,1)), to(rgba(10,153,191,1)));
-  box-shadow: rgba(0, 0, 0, 0.4) 0 3px 3px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 5px 5px;
   color: white;
-  height: 44px;
+  font-weight: bold;
+  height: 5.88235294%;
+  text-align: center;
+}
+
+section.view > header > hgroup {
+  display: inline-block;
+  font-weight: bold;
+}
+
+section.view > header .button {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(10,153,191,1)), to(rgba(8,133,166,1)));
+  border-radius: 5px;
+  box-shadow: inset rgba(0, 0, 0, 0.4) 1px 1px 1px;
+  font-size: 12px;
+  margin: 6px 10px;
+  padding: 10px 15px;
+}
+
+section.view > header .back-button:empty {
+  display: none;
+}
+
+section.view.main > section.content {
+}
+
+section.view.main > section.content > div.item {
+  background-color: white;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(220,220,220,1)));
+  border-radius: 20px;
+  display: inline-block;
+  margin: 2%;
+  padding: 2%;
+  vertical-align: top;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  -webkit-box-sizing: border-box;
+}
+
+section.view.main > section.content > div.item h4 {
+  color: #606060;
+  font-size: 20px;
+  text-align: center;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+@media (orientation: portrait) {
+
+  section.view.main > section.content > div.item {
+    width: 25%;
+    height: 20%;
+  }
+
+}
+
+@media (orientation: landscape) {
+
+  section.view.main > section.content > div.item {
+    width: 21%;
+    height: 25%;
+  }
+
+}
+
+section.view > section.content.slides {
+  padding: 0;
+  width: 200%;
+  -webkit-transform: translate3d(-50%, 0, 0);
+}
+
+section.view > section.content.slides > section.slide {
+  display: inline-block;
+  height: 100%;
+  padding: 2%;
+  vertical-align: top;
+  width: 50%;
+  -webkit-box-sizing: border-box;
+}
+
+section.view > section.content.slides > section.slide > section.content {
+  background-color: white;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(220,220,220,1)));
+  border-radius: 20px;
+  height: 100%;
+  padding: 2%;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  -webkit-box-sizing: border-box;
 }
