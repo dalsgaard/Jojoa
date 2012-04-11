@@ -92,27 +92,29 @@ section.view.main > section.content > div.item h4 {
 
 }
 
-section.view > section.content.slides {
-  padding: 0;
-  width: 200%;
-  -webkit-transform: translate3d(-50%, 0, 0);
-}
-
-section.view > section.content.slides > section.slide {
-  display: inline-block;
-  height: 100%;
-  padding: 2%;
-  vertical-align: top;
-  width: 50%;
-  -webkit-box-sizing: border-box;
-}
-
-section.view > section.content.slides > section.slide > section.content {
+section.view > section.content > section.slide-show {
   background-color: white;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(220,220,220,1)));
   border-radius: 20px;
   height: 100%;
+  overflow: hidden;
   padding: 2%;
   -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  -webkit-box-sizing: border-box;
+}
+
+section.view > section.content > section.slide-show > section.slides {
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -webkit-transition: all 1s;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide {
+  display: inline-block;
+  height: 100%;
+  padding: 2%;
+  vertical-align: top;
+  width: 25%;
   -webkit-box-sizing: border-box;
 }

@@ -38,6 +38,9 @@ function setup() {
 
   setupMainMenu(mainViewController.view, bundle, pageController);
 
+  var slides = document.querySelector("section.content > section.slide-show > section.slides");
+  var slideShow = new SlideShow(slides);
+
 };
 
 function setupMainMenu(content, bundle, pageController) {
@@ -58,5 +61,50 @@ function setupDoneButton(view, pageController) {
   function click(e) {
     pageController.dismissViewController(true);
     e.stopPropagation();
+  }
+}
+
+
+function SlideShow(viewport) {
+  var slides = viewport.querySelectorAll("section.slide");
+  var width = (slides.length * 100).toString() + "%";
+  viewport.style.width = width;
+  viewport.addEventListener('touchstart', touchStart, false);
+  viewport.addEventListener('touchend', touchEnd, false);
+  var index = 0;
+  update();
+  var clientX, clientY;
+  function touchStart(e) {
+    var touch = e.touches[0];
+    clientX = touch.clientX;
+    clientY = touch.clientY;
+  }
+  function touchEnd(e) {
+    var touch = e.changedTouches[0];
+    var dx = touch.clientX - clientX;
+    var dy = touch.clientY - clientY;
+    if (Math.abs(dx) > 20 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) {
+        left();    
+      } else {
+        right();    
+      }
+    }
+  }
+  function right() {
+    if (index > 0) {
+      index--;
+      update();
+    }
+  }
+  function left() {
+    if (index < slides.length - 1) {
+      index++;
+      update();
+    }
+  }
+  function update() {
+    var offset = "-" + (index * 100 / slides.length).toString() + "%";
+    viewport.style["-webkit-transform"] = "translate3d(" + offset + ", 0, 0)";
   }
 }
