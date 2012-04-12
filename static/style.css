@@ -113,8 +113,28 @@ section.view > section.content > section.slide-show > section.slides {
 section.view > section.content > section.slide-show > section.slides > section.slide {
   display: inline-block;
   height: 100%;
-  padding: 2%;
+  padding: 1%;
   vertical-align: top;
   width: 25%;
   -webkit-box-sizing: border-box;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide > * + * {
+  margin-top: 5%;
+}
+
+
+section.view > section.content > section.slide-show > section.slides > section.slide.bullets h2 {
+  font-size: 3em;
+  text-align: center;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide.bullets ul {
+  font-size: 2em;
+  list-style-position: inside;
+  list-style-type: disc;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide.bullets ul > li + li {
+  margin-top: 2%;
 }

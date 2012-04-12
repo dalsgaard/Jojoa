@@ -162,7 +162,7 @@ function Bundle(bundle) {
   for (var i = 0; i < views.length; i++) {
     var view = views[i];
     var controller = new ViewController(view);
-    var name = view.getAttribute('data-name');
+    var name = view.dataset.name;
     this.viewControllers[name] = controller;
   }
   this.navigationControllers = {};
@@ -170,8 +170,15 @@ function Bundle(bundle) {
   for (var i = 0; i < navs.length; i++) {
     var nav = navs[i];
     var controller = new NavigationController(nav);
-    var name = nav.getAttribute('data-name');
+    var name = nav.dataset.name;
     this.navigationControllers[name] = controller;
     this.viewControllers[name] = controller;
   }
+}
+Bundle.prototype.createNavigationController = function(template) {
+  template = template || 'default';
+  var controller = this.navigationControllers[template];
+  var clone = controller.cloneNode();
+  clone.innerHTML = controller.innerHTML;
+  return clone;
 }
