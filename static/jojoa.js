@@ -54,7 +54,7 @@ AbstractViewController.prototype.init = function(view) {
   this.view.addEventListener('webkitAnimationStart', function(e) {
     if (e.animationName === "modal-appear") {
       if (t.viewWillAppear) t.viewWillAppear(true);
-    } else {
+    } else if (e.animationName === "modal-disappear") {
       if (t.viewWillDisappear) t.viewWillDisappear(true);
     }
     e.stopPropagation();
@@ -63,7 +63,7 @@ AbstractViewController.prototype.init = function(view) {
     if (e.animationName === "modal-appear") {
       this.classList.remove('appear');
       if (t.viewDidAppear) t.viewDidAppear(true);
-    } else {
+    } else if (e.animationName === "modal-disappear") {
       t.pageController.page.removeChild(this);
       this.classList.remove('disappear');
       t.pageController = null;
@@ -95,7 +95,7 @@ function NavigationController(view) {
     var controller = t.viewControllers[t.viewControllers.length - 1];
     if (e.animationName === "navigation-push") {
       if (controller.viewWillAppear) controller.viewWillAppear(true);
-    } else {
+    } else if (e.animationName === "navigation-pop") {
       if (controller.viewWillDisappear) controller.viewWillDisappear(true);
     }
     e.stopPropagation();
@@ -106,7 +106,7 @@ function NavigationController(view) {
       controller = t.viewControllers[t.viewControllers.length - 1];
       this.classList.remove('push');
       if (controller.viewDidAppear) controller.viewDidAppear(true);
-    } else {
+    } else if (e.animationName === "navigation-pop") {
       controller = t.viewControllers.pop();
       this.removeChild(controller.view);
       this.classList.remove('pop');

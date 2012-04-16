@@ -1,0 +1,84 @@
+
+section.view.media-query("data-name"="media-query")
+  header
+    hgroup
+      h1 CSS3 Media Queries
+    nav.right
+      div.button.done Done
+  section.content
+    section.slide-show
+      section.slides
+
+        section.slide
+          h2 From the Specification
+          p
+            | A media query consists of a media type and zero or more expressions that check
+            | for the conditions of particular media features. Among the media features that can
+            | be used in media queries are ‘width’, ‘height’, and ‘color’. By using media queries,
+            | presentations can be tailored to a specific range of output devices without changing
+            | the content itself.
+
+        section.slide
+          h2 @media
+          pre.code
+            | @media (min-device-width: 500px) {
+            |  …
+            | }
+            | 
+            | @media (device-width: 768px)
+            |    and (device-height: 1024px) {
+            |  …
+            | }
+            | 
+            | @media (orientation: landscape) {
+            |  …
+            | }
+
+        section.slide
+          h2 link attribute
+          pre.code
+            | <link rel="stylesheet" href="tablet.css"
+            |       media="(device-width: 768px)">
+
+        section.slide
+          h2 @import
+          pre.code
+            | @import url(tablet.css) (device-width: 768px);
+
+        section.slide.demo
+          h2 Demo
+          div
+
+        section.slide
+          h2 Demo Code
+          pre.code
+            | @media (orientation: portrait) {
+            |   section.slide.demo div {
+            |     height: 5%;
+            |     width: 50%;
+            |   }
+            | }
+            | 
+            | @media (orientation: landscape) {
+            |   section.slide.demo div {
+            |     height: 50%;
+            |     width: 5%;
+            |   }
+            | }
+
+        section.slide
+          h2 From this application
+          pre.code
+            | @media (orientation: portrait) {
+            |   section.view > header {
+            |     height: 4.296875%;
+            |   }
+            | }
+            | 
+            | @media (orientation: landscape) {
+            |   section.view > header {
+            |     height: 5.88235294%;
+            |   }
+            | }
+
+      ul.page-control

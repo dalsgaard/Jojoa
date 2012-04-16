@@ -9,6 +9,7 @@ html
     link(rel='stylesheet', href="desktop.css", media="(min-device-width: 769px) and (min-device-height: 1025px)")
     link(rel='stylesheet', href="phone.css", media="(device-width: 320px) and (device-height: 480px)")
     link(rel='stylesheet', href="tablet.css", media="(device-width: 768px) and (device-height: 1024px)")
+    link(rel='stylesheet', href="slideshow.css")
     link(rel='stylesheet', href="style.css")
     script(src="script.js")
     script(src="modernizr.js")
@@ -38,7 +39,13 @@ html
         section.content
           button.push-foo Foo 
 
+
       include formfields
+
+      include transitions
       
+      include mediaquery
+
+      include animations
 
     section.page#page

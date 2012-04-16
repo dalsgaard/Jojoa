@@ -1,0 +1,88 @@
+
+section.view > section.content > section.slide-show {
+  background-color: white;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(220,220,220,1)));
+  border-radius: 20px;
+  height: 100%;
+  overflow: hidden;
+  padding: 2%;
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  -webkit-box-sizing: border-box;
+}
+
+section.view > section.content > section.slide-show > section.slides {
+  height: 96%;
+  -webkit-box-sizing: border-box;
+  -webkit-transition: all 600ms;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide {
+  display: inline-block;
+  height: 100%;
+  padding: 1%;
+  vertical-align: top;
+  -webkit-box-sizing: border-box;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide > * + * {
+  margin-top: 5%;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide > h3.filename + pre.code {
+  margin-top: 2%;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide h2 {
+  color: rgba(8,133,166,1);
+  font-size: 3em;
+  text-align: center;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide h3 {
+  color: #606060;
+  font-size: 2em;
+  font-style: italic;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide > p {
+  color: #606060;
+  font-size: 2em;
+  line-height: 150%;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide > ul {
+  color: #606060;
+  font-size: 2em;
+  list-style-position: inside;
+  list-style-type: disc;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide > ul > li + li {
+  margin-top: 2%;
+}
+
+section.view > section.content > section.slide-show > ul.page-control {
+  height: 4%;
+  text-align: center;
+}
+
+section.view > section.content > section.slide-show > ul.page-control > li {
+  background-color: rgba(8,133,166,1);
+  border-radius: 5px;
+  display: inline-block;
+  height: 10px;
+  vertical-align: middle;
+  width: 10px;
+
+}
+
+section.view > section.content > section.slide-show > ul.page-control > li.selected {
+  background-color: rgba(13,204,255,1);
+}
+
+section.view > section.content > section.slide-show > ul.page-control > li:not(:first-child) {
+  margin-left: 10px;
+}
+

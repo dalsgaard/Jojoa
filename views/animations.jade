@@ -1,0 +1,85 @@
+
+section.view.animations("data-name"="animations")
+  header
+    hgroup
+      h1 CSS3 Animations
+    nav.right
+      div.button.done Done
+  section.content
+    section.slide-show
+      section.slides
+
+        section.slide
+          h2 From the Specification
+          p
+            | This CSS module describes a way for authors to animate the values
+            | of CSS properties over time, using keyframes. The behavior of these
+            | keyframe animations can be controlled by specifying their duration,
+            | number of repeats, and repeating behavior.
+
+        section.slide.demo
+          h2 Demo
+          div
+
+        section.slide
+          h2 Demo Code - @keyframes
+          pre.code
+            | @keyframes demo {
+            |   25% {
+            |     background-color: rgba(150,150,150,1);
+            |     transform: translate3d(0, 150%, 0);
+            |   }
+            |   50% {
+            |     background-color: rgba(8,133,166,1);
+            |     transform: translate3d(150%, 150%, 0);
+            |   }
+            |   to {
+            |     background-color: rgba(13,204,255,1);
+            |     transform: translate3d(-150%, 150%, 0);
+            |   }
+            | }
+
+        section.slide
+          h2 Demo Code - animation property
+          pre.code
+            | section.slide.demo div.selected {
+            |   animation-name: demo;
+            |   animation-duration: 2s;
+            |   animation-iteration-count: 2;
+            |   animation-direction: alternate;
+            |   animation-timing-function: linear;
+            | }
+
+        section.slide
+          h2 Demo Code - JavaScript
+          pre.code
+            | var e = slides.querySelector(".slide.demo div");
+            | 
+            | e.addEventListener('click', function(e) {
+            |   this.classList.toggle('selected');
+            | }, false);
+            | 
+            | e.addEventListener('animationEnd', function(e) {
+            |   this.classList.remove('selected');
+            | }, false);
+
+
+        section.slide
+          h2 From this application
+          pre.code
+            | section.page > section.view.appear {
+            |   animation: modal-appear 1s ease-in-out;
+            | }
+            | 
+            | @-webkit-keyframes modal-appear {
+            |   from {
+            |     opacity: 0.0;
+            |     transform: scale(0.3, 0.3);
+            |   }
+            |   to {
+            |     opacity: 1.0;
+            |     transform: scale(1.0, 1.0);
+            |   }
+            | }
+
+      ul.page-control

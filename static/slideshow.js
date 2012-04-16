@@ -1,10 +1,18 @@
 
-function SlideShow(viewport) {
+function SlideShow(content) {
+  var viewport = content.querySelector("section.slides");
   var slides = viewport.querySelectorAll("section.slide");
+  var pageControl = null;
+  if (content.querySelector("ul.page-control")) {
+    pageControl = new PageControl(content.querySelector("ul.page-control"), slides.length);
+  }
   var width = (slides.length * 100).toString() + "%";
   viewport.style.width = width;
   viewport.addEventListener('touchstart', touchStart, false);
   viewport.addEventListener('touchend', touchEnd, false);
+  for (var i = 0; i < slides.length; i++) {
+    slides[i].style.width = (100 / slides.length).toString() + "%";
+  }
   var index = 0;
   update();
   var clientX, clientY;
@@ -59,5 +67,25 @@ function SlideShow(viewport) {
   function update() {
     var offset = "-" + (index * 100 / slides.length).toString() + "%";
     viewport.style["-webkit-transform"] = "translate3d(" + offset + ", 0, 0)";
+    if (pageControl) {
+      pageControl.currentPage(index);
+    }
   }
 }
+
+function PageControl(ul, length) {
+  this.lis = [];
+  for (var i = 0; i < length; i++) {
+    var li = document.createElement('li');
+    ul.appendChild(li);
+    this.lis.push(li);
+  }
+  this.currentIndex = 0;
+  this.lis[this.currentIndex].classList.add('selected');
+}
+PageControl.prototype.currentPage = function(index) {
+  this.lis[this.currentIndex].classList.remove('selected');
+  this.currentIndex = index;
+  this.lis[this.currentIndex].classList.add('selected');  
+}
+

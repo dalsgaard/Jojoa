@@ -1,0 +1,51 @@
+
+section.view.transitions("data-name"="transitions")
+  header
+    hgroup
+      h1 CSS3 Transitions
+    nav.right
+      div.button.done Done
+  section.content
+    section.slide-show
+      section.slides
+
+        section.slide
+          h2 From the Specification
+          p CSS Transitions allows property changes in CSS values to occur smoothly over a specified duration.
+
+        section.slide.demo
+          h2 Demo
+          div
+
+        section.slide
+          h2 Demo Code
+          pre.code
+            | section.slide.demo div {
+            |   background-color: rgba(8,133,166,1);
+            |   transition-duration: 1s;
+            |   transition-property: transform, background-color;
+            |   transition-timing-function: ease-in-out;
+            |   transform: translate3d(0, 0, 0) scale3d(2, 2, 1);
+            |  }
+            | 
+            | section.slide.demo div.selected {
+            |   background-color: rgba(13,204,255,1);
+            |   transform: translate3d(0, 150%, 0) scale3d(2, 2, 1);
+            | }  
+
+        section.slide
+          h2 From this application
+          h3.filename slideshow.css
+          pre.code
+            | section.slide-show > section.viewport {
+            |   transition: transform 600ms;
+            | }
+          h3.filename slideshow.js
+          pre.code
+            | function update() {
+            |   var dx = "-" + (index * 100 / slides.length) + "%";
+            |   viewport.style["transform"] = 
+            |       "translate3d(" + dx + ", 0, 0)";
+            | }
+
+      ul.page-control

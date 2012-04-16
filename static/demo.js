@@ -1,6 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', setup, false);
 
+var slideShows = [];
+
 function setup() {
   
   var page = document.querySelector("#page");
@@ -37,8 +39,24 @@ function setup() {
 
   setupMainMenu(mainViewController.view, bundle, pageController);
 
-  var slides = document.querySelector("section.content > section.slide-show > section.slides");
-  var slideShow = new SlideShow(slides);
+  var slideShowElements = document.querySelectorAll("section.content > section.slide-show");
+  for (var i = 0; i < slideShowElements.length; i++) {
+    slideShows.push(new SlideShow(slideShowElements[i]));    
+  }
+
+  // Transitions
+  document.querySelector("section.view.transitions section.slide.demo div").addEventListener('click', function(e) {
+    this.classList.toggle('selected');
+  }, false);
+
+  // Animations
+  document.querySelector("section.view.animations section.slide.demo div").addEventListener('click', function(e) {
+    this.classList.toggle('selected');
+  }, false);
+
+  document.querySelector("section.view.animations section.slide.demo div").addEventListener('webkitAnimationEnd', function(e) {
+    this.classList.remove('selected');
+  }, false);
 
 };
 
@@ -56,8 +74,10 @@ function setupMainMenu(content, bundle, pageController) {
     controllers[name] = controller;
   }
 
+  setupViewController('media-query');
   setupViewController('form-fields');
-
+  setupViewController('transitions');
+  setupViewController('animations');
 
 }
 
