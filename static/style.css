@@ -197,8 +197,12 @@ section.view.animations section.slide.demo div.selected {
   }
 }
 
-section.view.touch section.slide.demo canvas {
-  height: 80%;
-  width: 100%;
+section.view.touch section.slide.demo div {
+  background-color: rgba(13,204,255,1);
+  display: inline-block;
+  height: 20%;
+  width: 20%;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition-duration: 400ms;
 }
 

@@ -64,6 +64,15 @@ function setup() {
 
 function setupTouch() {
 
+  var slide = document.querySelector("section.view.touch section.slide.demo");
+  var marker = slide.querySelector("div");
+  slide.addEventListener('touchstart', function(e) {
+    marker.style['-webkit-transform'] = "translate3d(" + e.clientX + "px, " + e.clientY + "px, 0)";
+  }, false);
+  slide.addEventListener('mousedown', function(e) {
+    marker.style['-webkit-transform'] = "translate3d(" + e.clientX + "px, " + e.clientY + "px, 0)";
+  }, false);
+
 }
 
 function setupMainMenu(content, bundle, pageController) {
