@@ -196,3 +196,9 @@ section.view.animations section.slide.demo div.selected {
     background-color: rgba(13,204,255,1);
   }
 }
+
+section.view.touch section.slide.demo canvas {
+  height: 80%;
+  width: 100%;
+}
+

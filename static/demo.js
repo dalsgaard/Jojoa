@@ -58,7 +58,13 @@ function setup() {
     this.classList.remove('selected');
   }, false);
 
+  setupTouch();
+
 };
+
+function setupTouch() {
+
+}
 
 function setupMainMenu(content, bundle, pageController) {
 
@@ -78,6 +84,7 @@ function setupMainMenu(content, bundle, pageController) {
   setupViewController('form-fields');
   setupViewController('transitions');
   setupViewController('animations');
+  setupViewController('touch');
 
 }
 
