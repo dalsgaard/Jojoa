@@ -205,6 +205,7 @@ function setupMainMenu(content, bundle, pageController) {
   setupViewController('touch');
   setupViewController('webstorage');
   setupViewController('onlineoffline');
+  setupViewController('orientation');
 
 }
 
