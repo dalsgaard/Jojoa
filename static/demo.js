@@ -59,6 +59,9 @@ function setup() {
   }, false);
 
   setupTouch();
+  setupLocalStorage();
+  setupSessionStorage();
+  setupOnlineOffline();
 
 };
 
@@ -66,12 +69,94 @@ function setupTouch() {
 
   var slide = document.querySelector("section.view.touch section.slide.demo");
   var marker = slide.querySelector("div");
+
   slide.addEventListener('touchstart', function(e) {
-    marker.style['-webkit-transform'] = "translate3d(" + e.clientX + "px, " + e.clientY + "px, 0)";
+    var slideRect = this.getBoundingClientRect();
+    var markerRect = marker.getBoundingClientRect();
+    var touch = e.touches[0];
+    var x = touch.clientX - slideRect.left - markerRect.width / 2;
+    var y = touch.clientY - slideRect.top - markerRect.height / 2;
+    var translate = "translate3d(" + x + "px, " + y + "px, 0)";
+    marker.style['-webkit-transform'] = translate; 
   }, false);
+
   slide.addEventListener('mousedown', function(e) {
-    marker.style['-webkit-transform'] = "translate3d(" + e.clientX + "px, " + e.clientY + "px, 0)";
+    var slideRect = this.getBoundingClientRect();
+    var markerRect = marker.getBoundingClientRect();
+    var x = e.clientX - slideRect.left - markerRect.width / 2;
+    var y = e.clientY - slideRect.top - markerRect.height / 2;
+    marker.style['-webkit-transform'] = "translate3d(" + x + "px, " + y + "px, 0)";
   }, false);
+
+}
+
+function setupLocalStorage() {
+
+  var slide = document.querySelector("section.view.webstorage section.slide.demo.local");
+  var set = slide.querySelector("ul > li.set");
+  var get = slide.querySelector("ul > li.get");
+  var time = slide.querySelector("ul > li.time");
+
+  set.addEventListener('click', setTime, false);
+  function setTime() {
+    localStorage['time'] = (new Date()).toString();
+  }
+
+  get.addEventListener('click', getTime, false);
+  function getTime() {
+    time.innerHTML = localStorage['time'];
+  }
+
+  time.addEventListener('click', clearTimeField, false);
+  function clearTimeField() {
+    time.innerHTML = "";
+  }
+
+}
+
+function setupSessionStorage() {
+
+  var slide = document.querySelector("section.view.webstorage section.slide.demo.session");
+  var set = slide.querySelector("ul > li.set");
+  var get = slide.querySelector("ul > li.get");
+  var time = slide.querySelector("ul > li.time");
+
+  set.addEventListener('click', setTime, false);
+  function setTime() {
+    sessionStorage['time'] = (new Date()).toString();
+  }
+
+  get.addEventListener('click', getTime, false);
+  function getTime() {
+    time.innerHTML = sessionStorage['time'];
+  }
+
+  time.addEventListener('click', clearTimeField, false);
+  function clearTimeField() {
+    time.innerHTML = "";
+  }
+
+}
+
+function setupOnlineOffline() {
+
+  var slide = document.querySelector("section.view.onlineoffline section.slide.demo");
+  var check = slide.querySelector("ul > li.check");
+  var status = slide.querySelector("ul > li.status");
+
+  check.addEventListener('click', checkStatus, false);
+  function checkStatus() {
+    if (navigator.onLine) {
+      status.innerHTML = "Online";
+    } else {
+      status.innerHTML = "Offline";
+    }
+  }
+
+  status.addEventListener('click', clearStatusField, false);
+  function clearStatusField() {
+    status.innerHTML = "";
+  }
 
 }
 
@@ -87,6 +172,7 @@ function setupMainMenu(content, bundle, pageController) {
       e.stopPropagation();
     }, false);
     controllers[name] = controller;
+    return controller;
   }
 
   setupViewController('media-query');
@@ -94,6 +180,8 @@ function setupMainMenu(content, bundle, pageController) {
   setupViewController('transitions');
   setupViewController('animations');
   setupViewController('touch');
+  setupViewController('webstorage');
+  setupViewController('onlineoffline');
 
 }
 

@@ -1,0 +1,70 @@
+
+section.view.webstorage("data-name"="webstorage")
+  header
+    hgroup
+      h1 Web Storage
+    nav.right
+      div.button.done Done
+  section.content
+    section.slide-show
+      section.slides
+
+        section.slide
+          h2 From the Specification
+          p This specification defines an API for persistent data storage of key-value pair data in Web clients.
+
+        section.slide.demo.local
+          h2 Demo - Local Storage
+          ul
+            li.set
+              div.button Set Time
+            li.get 
+              div.button Get Time
+            li.time
+
+        section.slide
+          h2 Demo Code - Local Storage
+          pre.code
+            | set.addEventListener('click', setTime, false);
+            | function setTime() {
+            |   localStorage['time'] = (new Date()).toString();
+            | }
+            | 
+            | get.addEventListener('click', getTime, false);
+            | function getTime() {
+            |   time.innerHTML = localStorage['time'];
+            | }
+            | 
+            | time.addEventListener('click', clearTimeField, false);
+            | function clearTimeField() {
+            |   time.innerHTML = "";
+            | }
+
+        section.slide.demo.session
+          h2 Demo - Session Storage
+          ul
+            li.set
+              div.button Set Time
+            li.get 
+              div.button Get Time
+            li.output.time
+
+        section.slide
+          h2 Demo Code - Session Storage
+          pre.code
+            | set.addEventListener('click', setTime, false);
+            | function setTime() {
+            |   sessionStorage['time'] = (new Date()).toString();
+            | }
+            | 
+            | get.addEventListener('click', getTime, false);
+            | function getTime() {
+            |   time.innerHTML = sessionStorage['time'];
+            | }
+            | 
+            | time.addEventListener('click', clearTimeField, false);
+            | function clearTimeField() {
+            |   time.innerHTML = "";
+            | }
+
+      ul.page-control

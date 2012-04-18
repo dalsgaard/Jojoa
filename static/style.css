@@ -197,12 +197,50 @@ section.view.animations section.slide.demo div.selected {
   }
 }
 
+section.view.touch > section.content > section.slide-show > section.slides > section.slide.demo {
+  overflow: hidden;
+  padding: 0;
+}
+
 section.view.touch section.slide.demo div {
   background-color: rgba(13,204,255,1);
   display: inline-block;
   height: 20%;
   width: 20%;
-  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(50px, 50px, 0);
   -webkit-transition-duration: 400ms;
 }
 
+section.view.webstorage > section.content > section.slide-show > section.slides > section.slide.demo {
+  text-align: center;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide.demo ul {
+  display: inline-block;
+  list-style-type: none;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide.demo ul > li {
+  text-align: center;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide.demo ul > li + li {
+  margin-top: 1.5em;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide.demo ul > li > div.button {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(13,204,255,1)), to(rgba(10,153,191,1)));
+  border-radius: 0.5em;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 2px 2px;
+  color: white;
+  display: inline-block;
+  padding: 0.5em 1em;
+}
+
+section.view > section.content > section.slide-show > section.slides > section.slide.demo ul > li.output {
+  padding: 0.5em;
+}
+
+section.view.onlineoffline > section.content > section.slide-show > section.slides > section.slide.demo {
+  text-align: center;
+}

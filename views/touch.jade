@@ -20,4 +20,48 @@ section.view.touch("data-name"="touch")
 
         section.slide.demo
           div
+
+        section.slide
+          h2 Demo Code
+          pre.code
+            | slide.addEventListener('touchstart', function(e) {
+            |   var sr = this.getBoundingClientRect();
+            |   var mr = marker.getBoundingClientRect();
+            |   var touch = e.touches[0];
+            |   var x = touch.clientX - sr.left - mr.width / 2;
+            |   var y = touch.clientY - sr.top - mr.height / 2;
+            |   var t3d = "translate3d(" + x + "px," + y + "px, 0)";
+            |   marker.style['transform'] = t3d; 
+            | }, false);
+
+        section.slide
+          h2 From this application
+          pre.code
+            | viewport.addEventListener('touchstart', start, false);
+            | viewport.addEventListener('touchend', end, false);
+            | 
+            | var clientX, clientY;
+            | 
+            | function start(e) {
+            |   var touch = e.touches[0];
+            |   clientX = touch.clientX;
+            |   clientY = touch.clientY;
+            | }
+
+        section.slide
+          h2 From this application - continued
+          pre.code
+            | function end(e) {
+            |   var touch = e.changedTouches[0];
+            |   var dx = touch.clientX - clientX;
+            |   var dy = touch.clientY - clientY;
+            |   if (Math.abs(dx) > Math.abs(dy)) {
+            |     if (dx < 0) {
+            |       left();    
+            |     } else {
+            |       right();    
+            |     }
+            |   }
+            | }
+
       ul.page-control
