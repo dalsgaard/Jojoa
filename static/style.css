@@ -244,3 +244,8 @@ section.view > section.content > section.slide-show > section.slides > section.s
 section.view.onlineoffline > section.content > section.slide-show > section.slides > section.slide.demo {
   text-align: center;
 }
+
+section.view.onlineoffline > section.content > section.slide-show > section.slides > section.slide.demo ul > li.status {
+  font-size: 4em;
+  margin: 0;
+}

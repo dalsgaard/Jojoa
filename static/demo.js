@@ -61,7 +61,8 @@ function setup() {
   setupTouch();
   setupLocalStorage();
   setupSessionStorage();
-  setupOnlineOffline();
+  setupOnlineProperty();
+  setupOnlineOfflineEvents();
 
 };
 
@@ -138,9 +139,9 @@ function setupSessionStorage() {
 
 }
 
-function setupOnlineOffline() {
+function setupOnlineProperty() {
 
-  var slide = document.querySelector("section.view.onlineoffline section.slide.demo");
+  var slide = document.querySelector("section.view.onlineoffline section.slide.demo.online-property");
   var check = slide.querySelector("ul > li.check");
   var status = slide.querySelector("ul > li.status");
 
@@ -151,6 +152,28 @@ function setupOnlineOffline() {
     } else {
       status.innerHTML = "Offline";
     }
+  }
+
+  status.addEventListener('click', clearStatusField, false);
+  function clearStatusField() {
+    status.innerHTML = "";
+  }
+
+}
+
+function setupOnlineOfflineEvents() {
+
+  var slide = document.querySelector("section.view.onlineoffline section.slide.demo.online-offline-events");
+  var status = slide.querySelector("ul > li.status");
+
+  window.addEventListener('online', onlineEvent, false);
+  function onlineEvent() {
+    status.innerHTML = "Online";
+  }
+
+  window.addEventListener('offline', offlineEvent, false);
+  function offlineEvent() {
+    status.innerHTML = "Offline";
   }
 
   status.addEventListener('click', clearStatusField, false);
