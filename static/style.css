@@ -249,3 +249,39 @@ section.view.onlineoffline > section.content > section.slide-show > section.slid
   font-size: 4em;
   margin: 0;
 }
+
+section.view.orientation > section.content > section.slide-show > section.slides > section.slide.demo {
+  text-align: center;
+}
+
+section.view.orientation > section.content > section.slide-show > section.slides > section.slide.demo ul > li {
+  font-size: 3em;
+  padding: 0.2em;
+  margin: 0;
+}
+
+section.view.geolocation > section.content > section.slide-show > section.slides > section.slide.demo {
+  text-align: center;
+}
+
+section.view.geolocation > section.content > section.slide-show > section.slides > section.slide.demo ul > li.output {
+  font-size: 2em;
+  padding: 0;
+  margin: 0.7em 0 0 0;
+}
+
+
+section.view.form-fields > section.content > section.slide-show > section.slides > section.slide.demo ul {
+  width: 100%;
+}
+
+section.view.form-fields > section.content > section.slide-show > section.slides > section.slide.demo input {
+  font-size: 1em;
+}
+
+section.view.form-fields > section.content > section.slide-show > section.slides > section.slide.demo label {
+  display: inline-block;
+  margin-right: 1em;
+  text-align: right;
+  width: 15%;
+}

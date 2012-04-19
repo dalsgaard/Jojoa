@@ -1,0 +1,45 @@
+
+section.view.geolocation("data-name"="geolocation")
+  header
+    hgroup
+      h1 Geolocation
+    nav.right
+      div.button.done Done
+  section.content
+    section.slide-show
+      section.slides
+
+        section.slide
+          h2 From the Specification
+          p 
+            | This specification defines an API that provides scripted access to
+            | geographical location information associated with the hosting device.
+
+        section.slide.demo.simple
+          h2 Demo
+          ul
+            li.get
+              div.button Get Current Position
+            li.output.latitude
+            li.output.longitude
+            li.output.accuracy
+
+        section.slide
+          h2 Demo Code
+          pre.code
+            | get.addEventListener('click', currentPosition, false);
+            | function currentPosition() {
+            |   var geo = navigator.geolocation;
+            |   geo.getCurrentPosition(success, error);
+            |   function success(position) {
+            |     var coords = position.coords;
+            |     latitude.innerHTML = coords.latitude;
+            |     longitude.innerHTML = coords.longitude;
+            |     accuracy.innerHTML = coords.accuracy;
+            |   }
+            |   function error(e) {
+            |     alert(e.code);
+            |   }
+            | }
+
+      ul.page-control

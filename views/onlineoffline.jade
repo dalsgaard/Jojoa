@@ -25,10 +25,35 @@ section.view.onlineoffline("data-name"="onlineoffline")
             li.output.status
               div
 
+        section.slide
+          h2 onLine property - Code
+          pre.code
+            | check.addEventListener('click', checkStatus, false);
+            | function checkStatus() {
+            |   if (navigator.onLine) {
+            |     status.innerHTML = "Online";
+            |   } else {
+            |     status.innerHTML = "Offline";
+            |   }
+            | }
+
         section.slide.demo.online-offline-events
           h2 online and offline events
           ul
             li.output.status
               div 
+
+        section.slide
+          h2 online and offline events - Code
+          pre.code
+            | window.addEventListener('online', online, false);
+            | function online() {
+            |   status.innerHTML = "Online";
+            | }
+            | 
+            | window.addEventListener('offline', offline, false);
+            | function offline() {
+            |   status.innerHTML = "Offline";
+            | }
 
       ul.page-control

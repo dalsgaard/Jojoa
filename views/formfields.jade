@@ -7,13 +7,15 @@ section.view.form-fields("data-name"="form-fields")
   section.content
     section.slide-show
       section.slides
-        section.slide.bullets
-          h2 Bullets
-          ul
-            li Foo
-            li Bar
-            li Baz
+
         section.slide
+          h2 From the Specification
+          p
+            | The input element represents a typed data field,
+            | usually with a form control to allow the user to edit the data.
+      
+        section.slide.demo
+          h2 Demo
           ul
             li
               label Number
@@ -24,13 +26,21 @@ section.view.form-fields("data-name"="form-fields")
             li
               label e-Mail
               input(type='email')
+      
         section.slide
-          h2 Slide 2
-        section.slide
-          h2 Slide 3
+          h2 Demo Code
           pre.code
-            | Foo
-            | Bar
-            | Baz
+            | <ul>
+            |   <li>
+            |     <label>Number</label><input type="number">
+            |   </li>
+            |   <li>
+            |     <label>URL</label><input type="url">
+            |   </li>
+            |   <li>
+            |     <label>e-Mail</label><input type="email">
+            |   </li>
+            | </ul>
+      
       ul.page-control
 

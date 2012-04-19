@@ -63,6 +63,8 @@ function setup() {
   setupSessionStorage();
   setupOnlineProperty();
   setupOnlineOfflineEvents();
+  setupSimpleOrientation();
+  setupSimpleGeoLocation();
 
 };
 
@@ -183,6 +185,54 @@ function setupOnlineOfflineEvents() {
 
 }
 
+function setupSimpleOrientation() {
+
+  var slide = document.querySelector("section.view.orientation section.slide.demo.simple");
+  var alpha = slide.querySelector("ul > li.alpha");
+  var beta = slide.querySelector("ul > li.beta");
+  var gamma = slide.querySelector("ul > li.gamma");
+
+  var active = false;
+  slide.addEventListener('click', toggle, false);
+  function toggle() {
+    if (active) {
+      window.removeEventListener('deviceorientation', orientation);
+    } else {
+      window.addEventListener('deviceorientation', orientation, false);
+    };
+    active = !active;
+  }
+
+  function orientation(e) {
+    alpha.innerHTML = Math.round(e.alpha);
+    beta.innerHTML = Math.round(e.beta);
+    gamma.innerHTML = Math.round(e.gamma);
+  }
+
+}
+
+function setupSimpleGeoLocation() {
+  var slide = document.querySelector("section.view.geolocation section.slide.demo.simple");
+  var get = slide.querySelector("ul > li.get");
+  var latitude = slide.querySelector("ul > li.latitude");
+  var longitude = slide.querySelector("ul > li.longitude");
+  var accuracy = slide.querySelector("ul > li.accuracy");
+
+  get.addEventListener('click', currentPosition, false);
+  function currentPosition() {
+    navigator.geolocation.getCurrentPosition(success, error);
+    function success(position) {
+      var coords = position.coords;
+      latitude.innerHTML = coords.latitude;
+      longitude.innerHTML = coords.longitude;
+      accuracy.innerHTML = coords.accuracy;
+    }
+    function error(e) {
+      alert(e.code);
+    }
+  }
+}
+
 function setupMainMenu(content, bundle, pageController) {
 
   var controllers = {};
@@ -206,6 +256,7 @@ function setupMainMenu(content, bundle, pageController) {
   setupViewController('webstorage');
   setupViewController('onlineoffline');
   setupViewController('orientation');
+  setupViewController('geolocation');
 
 }
 

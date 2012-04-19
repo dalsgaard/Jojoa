@@ -22,10 +22,16 @@ section.view.orientation("data-name"="orientation")
             li.output.beta
             li.output.gamma
 
-        section.slide.demo.online-offline-events
-          h2 online and offline events
-          ul
-            li.output.status
-              div 
+        section.slide
+          h2 Demo Code
+          pre.code
+            | window.addEventListener('deviceorientation',
+            |                         orientation, false);
+            | 
+            | function orientation(e) {
+            |   alpha.innerHTML = Math.round(e.alpha);
+            |   beta.innerHTML = Math.round(e.beta);
+            |   gamma.innerHTML = Math.round(e.gamma);
+            | }
 
       ul.page-control
