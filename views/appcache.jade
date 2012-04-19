@@ -1,0 +1,62 @@
+
+section.view.appcache("data-name"="appcache")
+  header
+    hgroup
+      h1 AppCache
+    nav.right
+      div.button.done Done
+  section.content
+    section.slide-show
+      section.slides
+
+        section.slide
+          h2 From the specification
+          p 
+            | In order to enable users to continue interacting with Web applications
+            | and documents even when their network connection is unavailable
+            | — for instance, because they are traveling outside of their ISP's coverage area
+            | — authors can provide a manifest which lists the files that are needed for the Web
+            | application to work offline and which causes the user's browser to keep a copy
+            | of the files for use offline.
+
+        section.slide
+          h2 The Cache Manifest
+          pre.code
+            | CACHE MANIFEST
+            | 
+            | CACHE:
+            | 
+            | FALLBACK:
+            | 
+            | NETWORK:
+
+        section.slide
+          h2 The Manifest Attribute
+
+          h3.filename index.html
+          pre.code
+            | <!DOCTYPE html>
+            | <html manifest="cache.manifest">
+            |   ...
+            | </html>
+          h3.filename MIME Type
+          pre.code text/cache-manifest
+
+        section.slide
+          h2 From this application
+          pre.code
+            | CACHE MANIFEST
+            | # Version 2
+            | 
+            | /style.css
+            | /demo.js
+            | /images/background.jpg
+            | /images/html5.png
+            | /images/css3.png
+            | /images/w3c.png
+            | /Inconsolata.otf
+            | 
+            | NETWORK:
+            | *
+
+      ul.page-control

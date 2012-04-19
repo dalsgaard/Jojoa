@@ -1,0 +1,24 @@
+CACHE MANIFEST
+# Version 4
+
+/reset.css
+/device.css
+/desktop.css
+/phone.css
+/tablet.css
+/slideshow.css
+/style.css
+
+/jojoa.js
+/slideshow.js
+/demo.js
+
+/images/html5.png
+/images/css3.png
+/images/w3c.png
+/background.jpg
+
+/Inconsolata.otf
+
+NETWORK:
+*

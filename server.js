@@ -31,6 +31,10 @@ app.get("/index", function(req, res) {
   res.render("index");
 });
 
+app.get("/cache", function(req, res) {
+  res.render("cache");
+});
+
 var port = process.argv[2] || 8340;
 
 app.listen(port);

@@ -20,7 +20,7 @@ section.view > section.content > section.slide-show > section.slides {
 section.view > section.content > section.slide-show > section.slides > section.slide {
   display: inline-block;
   height: 100%;
-  padding: 0.8%;
+  padding: 0.92%;
   vertical-align: top;
   -webkit-box-sizing: border-box;
 }

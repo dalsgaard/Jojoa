@@ -73,10 +73,28 @@ section.view.main > section.content > div.item {
 section.view.main > section.content > div.item h4 {
   color: #606060;
   font-size: 20px;
+  height: 25%;
   text-align: center;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
 }
 
+section.view.main > section.content > div.item div {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  height: 75%;
+}
+
+section.view.main > section.content > div.item.w3c div {
+  background-image: url(images/w3c.png);
+}
+
+section.view.main > section.content > div.item.css div {
+  background-image: url(images/css3.png);
+}
+
+section.view.main > section.content > div.item.html div {
+  background-image: url(images/html5.png);
+}
 
 pre.code {
   font-family: Inconsolata;

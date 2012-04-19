@@ -13,6 +13,8 @@ function setup() {
   var mainViewController = bundle.viewControllers.main;
   pageController.presentViewController(mainViewController, false);
 
+  /*
+
   var navController = bundle.viewControllers.nav;
   var fooViewController = bundle.viewControllers.foo;
   var barViewController = bundle.viewControllers.bar;
@@ -36,6 +38,8 @@ function setup() {
     pageController.presentViewController(navController, true);
     e.stopPropagation();
   }, false);
+
+  */
 
   setupMainMenu(mainViewController.view, bundle, pageController);
 
@@ -257,6 +261,7 @@ function setupMainMenu(content, bundle, pageController) {
   setupViewController('onlineoffline');
   setupViewController('orientation');
   setupViewController('geolocation');
+  setupViewController('appcache');
 
 }
 

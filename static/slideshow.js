@@ -49,7 +49,6 @@ function SlideShow(content) {
       } else {
         right();    
       }
-      console.log(document.activeElement);
     }
   }
   function right() {
