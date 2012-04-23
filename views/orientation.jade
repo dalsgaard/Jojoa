@@ -34,4 +34,23 @@ section.view.orientation("data-name"="orientation")
             |   gamma.innerHTML = Math.round(e.gamma);
             | }
 
+        section.slide.demo.advanced
+          h2 3D Demo
+          div.outer
+            div.inner
+
+        section.slide
+          h2 3D Demo Code
+          pre.code
+            | window.addEventListener('deviceorientation',
+            |                         orientation, false);
+            | 
+            | function orientation(e) {
+            |   var x = "rotateX(" + e.gamma + "deg) ";
+            |   var y = "rotateY(" + e.beta + "deg) ";
+            |   var z = "rotateZ(" + e.alpha + "deg)";
+            |   var transform = x + y + z;
+            |   inner.style['-webkit-transform'] = transform; 
+            | }
+
       ul.page-control

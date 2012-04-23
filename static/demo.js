@@ -68,7 +68,9 @@ function setup() {
   setupOnlineProperty();
   setupOnlineOfflineEvents();
   setupSimpleOrientation();
+  setup3dOrientation();
   setupSimpleGeoLocation();
+  setupMapGeoLocation();
 
 };
 
@@ -215,6 +217,33 @@ function setupSimpleOrientation() {
 
 }
 
+function setup3dOrientation() {
+
+  var slide = document.querySelector("section.view.orientation section.slide.demo.advanced");
+  var inner = slide.querySelector("div.inner");
+
+  var active = false;
+  slide.addEventListener('click', toggle, false);
+  function toggle() {
+    if (active) {
+      window.removeEventListener('deviceorientation', orientation);
+      inner.style['-webkit-transform'] = "rotate3d(0,0,0,0)";
+    } else {
+      window.addEventListener('deviceorientation', orientation, false);
+    };
+    active = !active;
+  }
+
+  function orientation(e) {
+    var x = "rotateX(" + e.gamma + "deg) ";
+    var y = "rotateY(" + e.beta + "deg) ";
+    var z = "rotateZ(" + e.alpha + "deg)";
+    var transform = x + y + z;
+    inner.style['-webkit-transform'] = transform; 
+  }
+
+}
+
 function setupSimpleGeoLocation() {
   var slide = document.querySelector("section.view.geolocation section.slide.demo.simple");
   var get = slide.querySelector("ul > li.get");
@@ -224,6 +253,44 @@ function setupSimpleGeoLocation() {
 
   get.addEventListener('click', currentPosition, false);
   function currentPosition() {
+    navigator.geolocation.getCurrentPosition(success, error);
+    function success(position) {
+      var coords = position.coords;
+      latitude.innerHTML = coords.latitude;
+      longitude.innerHTML = coords.longitude;
+      accuracy.innerHTML = coords.accuracy;
+    }
+    function error(e) {
+      alert(e.code);
+    }
+  }
+}
+
+function setupMapGeoLocation() {
+  var slide = document.querySelector("section.view.geolocation section.slide.demo.map");
+  var get = slide.querySelector("ul > li.get");
+
+  var options = {
+    zoom: 8,
+    center: new google.maps.LatLng(-34.397, 150.644),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var canvas = slide.querySelector("div.map");
+
+  var outer = slide.querySelector("div.outer");
+  outer.addEventListener('touchstart', cancel, false);
+  outer.addEventListener('touchend', cancel, false);
+  outer.addEventListener('mousedown', cancel, false);
+  outer.addEventListener('mouseup', cancel, false);
+  function cancel(e) {
+    e.stopPropagation();
+  }
+
+  get.addEventListener('click', currentPosition, false);
+  function currentPosition() {
+
+    var map = new google.maps.Map(canvas, options);
+
     navigator.geolocation.getCurrentPosition(success, error);
     function success(position) {
       var coords = position.coords;
@@ -260,7 +327,9 @@ function setupMainMenu(content, bundle, pageController) {
   setupViewController('webstorage');
   setupViewController('onlineoffline');
   setupViewController('orientation');
+
   setupViewController('geolocation');
+  
   setupViewController('appcache');
 
 }

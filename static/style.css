@@ -278,6 +278,22 @@ section.view.orientation > section.content > section.slide-show > section.slides
   margin: 0;
 }
 
+section.view.orientation > section.content > section.slide-show > section.slides > section.slide.demo div.outer {
+  border: 5px solid rgba(10,153,191,1);
+  display: inline-block;
+  height: 50%;
+  width: 50%;
+  -webkit-perspective: 750;
+}
+
+section.view.orientation > section.content > section.slide-show > section.slides > section.slide.demo div.inner {
+  background-color: rgba(13,204,255,0.5);
+  border: 5px solid rgba(8,133,166,1);
+  height: 100%;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+}
+
 section.view.geolocation > section.content > section.slide-show > section.slides > section.slide.demo {
   text-align: center;
 }
@@ -288,6 +304,16 @@ section.view.geolocation > section.content > section.slide-show > section.slides
   margin: 0.7em 0 0 0;
 }
 
+section.view.geolocation > section.content > section.slide-show > section.slides > section.slide.demo.map div.outer {
+  display: inline-block;
+  height: 60%;
+  width: 80%;
+}
+
+section.view.geolocation > section.content > section.slide-show > section.slides > section.slide.demo.map div.map {
+  height: 100%;
+  width: 100%;
+}
 
 section.view.form-fields > section.content > section.slide-show > section.slides > section.slide.demo ul {
   width: 100%;
