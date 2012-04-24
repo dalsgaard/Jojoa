@@ -289,14 +289,18 @@ function setupMapGeoLocation() {
   get.addEventListener('click', currentPosition, false);
   function currentPosition() {
 
-    var map = new google.maps.Map(canvas, options);
+    map = new google.maps.Map(canvas, options);
 
     navigator.geolocation.getCurrentPosition(success, error);
     function success(position) {
       var coords = position.coords;
-      latitude.innerHTML = coords.latitude;
-      longitude.innerHTML = coords.longitude;
-      accuracy.innerHTML = coords.accuracy;
+      var latLng = new google.maps.LatLng(coords.latitude, coords.longitude);
+      map.panTo(latLng);
+      var marker = new google.maps.Marker({
+        animation: google.maps.Animation.DROP,
+        position: latLng,
+        map: map
+      });
     }
     function error(e) {
       alert(e.code);
