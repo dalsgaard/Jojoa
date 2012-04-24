@@ -63,6 +63,7 @@ function setup() {
   }, false);
 
   setupTouch();
+  setupTouchCanvas();
   setupLocalStorage();
   setupSessionStorage();
   setupOnlineProperty();
@@ -76,26 +77,72 @@ function setup() {
 
 function setupTouch() {
 
-  var slide = document.querySelector("section.view.touch section.slide.demo");
-  var marker = slide.querySelector("div");
+  var slide = document.querySelector("section.view.touch section.slide.demo.start");
+  var outer = slide.querySelector("div.outer");
+  var marker = slide.querySelector("div.marker");
 
-  slide.addEventListener('touchstart', function(e) {
-    var slideRect = this.getBoundingClientRect();
+  outer.addEventListener('touchstart', function(e) {
+    var outerRect = this.getBoundingClientRect();
     var markerRect = marker.getBoundingClientRect();
     var touch = e.touches[0];
-    var x = touch.clientX - slideRect.left - markerRect.width / 2;
-    var y = touch.clientY - slideRect.top - markerRect.height / 2;
+    var x = touch.clientX - outerRect.left - markerRect.width / 2;
+    var y = touch.clientY - outerRect.top - markerRect.height / 2;
     var translate = "translate3d(" + x + "px, " + y + "px, 0)";
     marker.style['-webkit-transform'] = translate; 
+    e.stopPropagation();
   }, false);
 
-  slide.addEventListener('mousedown', function(e) {
-    var slideRect = this.getBoundingClientRect();
+  outer.addEventListener('mousedown', function(e) {
+    var outerRect = this.getBoundingClientRect();
     var markerRect = marker.getBoundingClientRect();
-    var x = e.clientX - slideRect.left - markerRect.width / 2;
-    var y = e.clientY - slideRect.top - markerRect.height / 2;
+    var x = e.clientX - outerRect.left - markerRect.width / 2;
+    var y = e.clientY - outerRect.top - markerRect.height / 2;
     marker.style['-webkit-transform'] = "translate3d(" + x + "px, " + y + "px, 0)";
+    e.stopPropagation();
   }, false);
+
+  outer.addEventListener('touchend', cancel, false);
+  outer.addEventListener('mouseup', cancel, false);
+  function cancel(e) {
+    e.stopPropagation();
+  }
+
+}
+
+function setupTouchCanvas() {
+
+  var slide = document.querySelector("section.view.touch section.slide.demo.move");
+  var canvas = slide.querySelector("canvas");
+  var ctx = canvas.getContext('2d');
+  ctx.strokeStyle = "rgba(10,153,191,1)";
+
+  canvas.addEventListener('touchstart', function(e) {
+    var rect = this.getBoundingClientRect();
+    var touch = e.touches[0];
+    var x = touch.clientX - rect.left;
+    var y = touch.clientY - rect.top;
+    ctx.clearRect(0, 0, 800, 450);
+    e.stopPropagation();
+    e.preventDefault();
+  }, false);
+
+  canvas.addEventListener('touchmove', function(e) {
+    var rect = this.getBoundingClientRect();
+    var touch = e.touches[0];
+    var x = touch.clientX - rect.left;
+    var y = touch.clientY - rect.top;
+    ctx.beginPath();
+    ctx.arc(x, y, 30, 0, Math.PI * 2);
+    ctx.stroke();
+    e.stopPropagation();
+    e.preventDefault();
+  }, false);
+
+  canvas.addEventListener('touchend', cancel, false);
+  function cancel(e) {
+    e.stopPropagation();
+    e.preventDefault();
+  }
 
 }
 

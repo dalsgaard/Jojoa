@@ -220,13 +220,29 @@ section.view.touch > section.content > section.slide-show > section.slides > sec
   padding: 0;
 }
 
-section.view.touch section.slide.demo div {
+section.view.touch section.slide.demo {
+  text-align: center;
+}
+
+section.view.touch section.slide.demo div.marker {
   background-color: rgba(13,204,255,1);
+  border-radius: 10px;
   display: inline-block;
   height: 20%;
   width: 20%;
-  -webkit-transform: translate3d(50px, 50px, 0);
-  -webkit-transition-duration: 400ms;
+}
+
+section.view.touch section.slide.demo div.outer {
+  border: 3px solid #999;
+  display: inline-block;
+  height: 70%;
+  overflow: hidden;
+  text-align: left;
+  width: 80%;
+}
+
+section.view.touch section.slide.demo canvas {
+  border: 3px solid #999;
 }
 
 section.view.webstorage > section.content > section.slide-show > section.slides > section.slide.demo {

@@ -18,11 +18,13 @@ section.view.touch("data-name"="touch")
             | displayed upon it (e.g. for touch screens) or associated with it
             | (e.g. for drawing tablets without displays).
 
-        section.slide.demo
-          div
+        section.slide.demo.start
+          h2 Demo - touchstart
+          div.outer
+            div.marker
 
         section.slide
-          h2 Demo Code
+          h2 Demo Code - touchstart
           pre.code
             | slide.addEventListener('touchstart', function(e) {
             |   var sr = this.getBoundingClientRect();
@@ -30,15 +32,19 @@ section.view.touch("data-name"="touch")
             |   var touch = e.touches[0];
             |   var x = touch.clientX - sr.left - mr.width / 2;
             |   var y = touch.clientY - sr.top - mr.height / 2;
-            |   var t3d = "translate3d(" + x + "px," + y + "px, 0)";
-            |   marker.style['transform'] = t3d; 
+            |   var t3d = "translate3d(" + x + "px," + y + "px,0)";
+            |   marker.style['transform'] = t3d;
             | }, false);
+
+        section.slide.demo.move
+          h2 Demo - touchmove
+          canvas(height=450, width=800)
 
         section.slide
           h2 From this application
           pre.code
-            | viewport.addEventListener('touchstart', start, false);
-            | viewport.addEventListener('touchend', end, false);
+            | slides.addEventListener('touchstart', start, false);
+            | slides.addEventListener('touchend', end, false);
             | 
             | var clientX, clientY;
             | 
