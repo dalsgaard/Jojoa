@@ -345,3 +345,7 @@ section.view.form-fields > section.content > section.slide-show > section.slides
   text-align: right;
   width: 15%;
 }
+
+section.view.appcache > section.content > section.slide-show > section.slides > section.slide.demo {
+  text-align: center;
+}

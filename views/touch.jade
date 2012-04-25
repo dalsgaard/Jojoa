@@ -41,6 +41,36 @@ section.view.touch("data-name"="touch")
           canvas(height=450, width=800)
 
         section.slide
+          h2 Demo Code - touchmove
+          pre.code
+            | canvas.addEventListener('touchmove', function(e) {
+            |   var rect = this.getBoundingClientRect();
+            |   var touch = e.touches[0];
+            |   var x = touch.clientX - rect.left;
+            |   var y = touch.clientY - rect.top;
+            |   ctx.beginPath();
+            |   ctx.arc(x, y, 30, 0, Math.PI * 2);
+            |   ctx.stroke();
+            |   e.stopPropagation();
+            |   e.preventDefault();
+            | }, false);
+
+        section.slide
+          h2 Demo Code - touchmove (continued)
+          pre.code
+            | canvas.addEventListener('touchstart', function(e) {
+            |   ctx.clearRect(0, 0, canvas.width, canvas.height);
+            |   e.stopPropagation();
+            |   e.preventDefault();
+            | }, false);
+            | 
+            | canvas.addEventListener('touchend', function(e) {
+            |   e.stopPropagation();
+            |   e.preventDefault();
+            | }, false);
+
+
+        section.slide
           h2 From this application
           pre.code
             | slides.addEventListener('touchstart', start, false);
@@ -55,7 +85,7 @@ section.view.touch("data-name"="touch")
             | }
 
         section.slide
-          h2 From this application - continued
+          h2 From this application (continued)
           pre.code
             | function end(e) {
             |   var touch = e.changedTouches[0];

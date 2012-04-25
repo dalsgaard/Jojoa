@@ -42,6 +42,53 @@ section.view.appcache("data-name"="appcache")
           h3.filename MIME Type
           pre.code text/cache-manifest
 
+        section.slide.demo
+          h2 Demo
+          ul
+            li
+              div.button Update Cache
+            li.output
+              pre
+
+        section.slide
+          h2 Demo Code
+          pre.code
+            | var cache = window.applicationCache;
+            | cache.addEventListener('updateready', function() {
+            |   if (confirm("Update ready - reload?")) {
+            |     location.reload();
+            |   }
+            | }, false);
+
+        section.slide
+          h2 Demo Code (continued)
+          pre.code
+            | cache.addEventListener('checking', function() {
+            |    pre.innerHTML += "Checking\\n";
+            | }, false);
+            | cache.addEventListener('noupdate', function() {
+            |   pre.innerHTML += "No Update\\n";
+            | }, false);
+            | cache.addEventListener('downloading', function() {
+            |   pre.innerHTML += "Downloading\\n";
+            | }, false);
+            | cache.addEventListener('progress', function() {
+            |   pre.innerHTML += "*";
+            | }, false);
+
+        section.slide
+          h2 Demo Code (continued)
+          pre.code
+            | cache.addEventListener('cached', function() {
+            |   pre.innerHTML += "\\nCached\\n";
+            | }, false);
+            | cache.addEventListener('obsolete', function() {
+            |   pre.innerHTML += "Obsolete\\n";
+            | }, false);
+            | cache.addEventListener('error', function() {
+            |   alert("Error");
+            | }, false);
+
         section.slide
           h2 From this application
           pre.code

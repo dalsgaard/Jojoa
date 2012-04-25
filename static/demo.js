@@ -4,6 +4,13 @@ document.addEventListener('DOMContentLoaded', setup, false);
 var slideShows = [];
 
 function setup() {
+
+  var appcache = window.applicationCache;
+  appcache.addEventListener('updateready', function() {
+    if (confirm("Update ready - reload?")) {
+      location.reload();
+    }
+  }, false);
   
   var page = document.querySelector("#page");
 
@@ -72,6 +79,7 @@ function setup() {
   setup3dOrientation();
   setupSimpleGeoLocation();
   setupMapGeoLocation();
+  setupAppCache();
 
 };
 
@@ -80,6 +88,7 @@ function setupTouch() {
   var slide = document.querySelector("section.view.touch section.slide.demo.start");
   var outer = slide.querySelector("div.outer");
   var marker = slide.querySelector("div.marker");
+  marker.style['-webkit-transform'] = "translate3d(10px, 10px, 0)";
 
   outer.addEventListener('touchstart', function(e) {
     var outerRect = this.getBoundingClientRect();
@@ -92,17 +101,7 @@ function setupTouch() {
     e.stopPropagation();
   }, false);
 
-  outer.addEventListener('mousedown', function(e) {
-    var outerRect = this.getBoundingClientRect();
-    var markerRect = marker.getBoundingClientRect();
-    var x = e.clientX - outerRect.left - markerRect.width / 2;
-    var y = e.clientY - outerRect.top - markerRect.height / 2;
-    marker.style['-webkit-transform'] = "translate3d(" + x + "px, " + y + "px, 0)";
-    e.stopPropagation();
-  }, false);
-
   outer.addEventListener('touchend', cancel, false);
-  outer.addEventListener('mouseup', cancel, false);
   function cancel(e) {
     e.stopPropagation();
   }
@@ -117,11 +116,7 @@ function setupTouchCanvas() {
   ctx.strokeStyle = "rgba(10,153,191,1)";
 
   canvas.addEventListener('touchstart', function(e) {
-    var rect = this.getBoundingClientRect();
-    var touch = e.touches[0];
-    var x = touch.clientX - rect.left;
-    var y = touch.clientY - rect.top;
-    ctx.clearRect(0, 0, 800, 450);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     e.stopPropagation();
     e.preventDefault();
   }, false);
@@ -138,11 +133,11 @@ function setupTouchCanvas() {
     e.preventDefault();
   }, false);
 
-  canvas.addEventListener('touchend', cancel, false);
-  function cancel(e) {
+  canvas.addEventListener('touchend', function(e) {
     e.stopPropagation();
     e.preventDefault();
-  }
+  }, false);
+  
 
 }
 
@@ -353,6 +348,45 @@ function setupMapGeoLocation() {
       alert(e.code);
     }
   }
+}
+
+function setupAppCache() {
+  var slide = document.querySelector("section.view.appcache section.slide.demo");
+  var button = slide.querySelector("ul > li > div.button");
+  var pre = slide.querySelector("ul > li > pre");
+
+  var appcache = window.applicationCache;
+  var firstRun = true;
+  button.addEventListener('click', click, false);
+  function click() {
+    pre.innerHTML = "";
+    if (firstRun) {
+      appcache.addEventListener('checking', function() {
+        pre.innerHTML += "Checking\n";
+      }, false);
+      appcache.addEventListener('noupdate', function() {
+        pre.innerHTML += "No Update\n";
+      }, false);
+      appcache.addEventListener('downloading', function() {
+        pre.innerHTML += "Downloading\n";
+      }, false);
+      appcache.addEventListener('progress', function() {
+        pre.innerHTML += "*";
+      }, false);
+      appcache.addEventListener('cached', function() {
+        pre.innerHTML += "\nCached\n";
+      }, false);
+      appcache.addEventListener('obsolete', function() {
+        pre.innerHTML += "Obsolete\n";
+      }, false);
+      appcache.addEventListener('error', function() {
+        alert("Error");
+      }, false);
+      firstRun = false;
+    }
+    appcache.update();
+  }
+
 }
 
 function setupMainMenu(content, bundle, pageController) {
